@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: rbpo_application
+  datasource:
+    url: jdbc:postgresql://localhost:5432/sandbox
+    username: ${JDBC_USER}
+    password: ${JDBC_PASSWORD}
+  jpa:
+    hibernate:
+      ddl-auto: create-drop  # или update, если не нужно пересоздавать таблицы каждый раз
+    show-sql: true  # Показывает SQL-запросы в консоли
+    properties:
+      hibernate:
+        "[format_sql]": true  # Форматирование SQL-запросов для удобства чтения
+
+logging:
+  level:
+    "[org.hibernate.SQL]": DEBUG  # Показывает SQL-запросы
+    "[org.hibernate.type.descriptor.sql.BasicBinder]": TRACE  # Показывает параметры запросов

@@ -1,0 +1,25 @@
+package com.mtuci.rbpo.controller;
+
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.*;
+import com.mtuci.rbpo.model.User;
+import com.mtuci.rbpo.model.Details;
+import com.mtuci.rbpo.repository.DetailsRepository;
+import com.mtuci.rbpo.service.UserService;
+
+@RestController
+@RequestMapping("/details")
+@RequiredArgsConstructor
+public class UserDetailsController {
+
+    private final DetailsRepository detailsRepository;
+    private final UserService userService;
+
+    @PostMapping("/{user_id}/save")
+    public void save(@PathVariable(value = "user_id") Long userId,
+                     @RequestBody Details details) {
+        User user = userService.findById(userId);
+        details.setUser(user);
+        detailsRepository.save(user_details);
+    }
+}
